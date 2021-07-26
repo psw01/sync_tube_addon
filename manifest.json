@@ -1,0 +1,10 @@
+{
+    "name": "Sync-Alpha",
+    "version": "0.0001",
+    "manifest_version": 2,
+    "content_scripts": [{
+        "matches": [ "https://sync-tube.de/rooms/*"],
+        "js": ["content.js"]
+
+    }]
+}
