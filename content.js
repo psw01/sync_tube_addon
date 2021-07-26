@@ -6,7 +6,7 @@ if (!localStorage.getItem('PP_hook'))
 Hook = localStorage.getItem('PP_hook');
 
 if (Link != '') {
-    var sending_prompt = false //confirm("send to discord ?");
+    var sending_prompt = confirm("send to discord ?");
     if (!localStorage.getItem('PP_username'))
         localStorage.setItem('PP_username', prompt("Username: "));
     var username = localStorage.getItem('PP_username');
