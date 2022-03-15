@@ -4,7 +4,9 @@ var Hook = ''
 if (!localStorage.getItem('PP_hook'))
     ask_hook();
 Hook = localStorage.getItem('PP_hook');
-
+setTimeout(function(){
+		
+		
 if (Link != '') {
     var sending_prompt = confirm("send to discord ?");
     if (!localStorage.getItem('PP_username'))
@@ -24,7 +26,7 @@ if (Link != '') {
             }
         );
 }
-
+}, 3000);
 document.addEventListener('keydown', (event) => {
     if (event.code == 'Enter') {
         input = document.getElementsByClassName('searchInput')[0].value
@@ -34,6 +36,7 @@ document.addEventListener('keydown', (event) => {
             ask_hook()
         if (input == '/resize')
             resize()
+        document.getElementsByClassName('searchInput')[0].value = ''
     }
     if (event.code == 'Escape')
         scaler(!document.body.children[0].hidden)
