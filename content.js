@@ -1,6 +1,17 @@
 var Link = window.location.toString()
 var Hook = ''
 
+zoom = 1
+var mouseDown = 0;
+
+document.body.onmousedown = function() {
+    ++mouseDown;
+}
+document.body.onmouseup = function() {
+    --mouseDown;
+}
+
+
 if (!localStorage.getItem('PP_hook'))
     ask_hook();
 Hook = localStorage.getItem('PP_hook');
@@ -38,11 +49,32 @@ document.addEventListener('keydown', (event) => {
             resize()
         document.getElementsByClassName('searchInput')[0].value = ''
     }
-    if (event.code == 'Escape')
+    if (event.code == 'Escape'){
         scaler(!document.body.children[0].hidden)
+    }
+    if(event.key.toLowerCase() == 'r'){
+        $(".view").css({ left: 0, top: 0 })
+    }
+    if (event.key == 'Control') {
+        $(".view").css('background-color','rgba(255, 255, 255, 0.25)')
+        $("#player").css("z-index","-99")
+        
+    }
 
 }, false);
 
+$(".view").draggable({
+    appendTo: "body",
+    cursor: "crosshair"
+})
+
+
+document.addEventListener('keyup', (event) => {
+    if(event.key == "Control"){
+        $(".view").css('background-color','black')
+        $("#player").css("z-index","99")
+    }
+})
 
 function ask_hook() {
     localStorage.setItem('PP_hook', prompt("hook: "));
@@ -61,6 +93,9 @@ function scaler(toggle) {
     document.querySelectorAll("body > *:not(.left_wrapper) > *").forEach(e => { e.hidden = toggle });
     document.getElementsByClassName('left_wrapper')[0].style.width = (toggle) ? "99%" : "60%"
 }
+
+
+
 
 
 

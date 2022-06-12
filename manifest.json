@@ -3,8 +3,9 @@
     "version": "0.03",
     "manifest_version": 2,
     "content_scripts": [{
+        "run_at": "document_idle",
         "matches": ["https://sync-tube.de/rooms/*"],
-        "js": ["content.js"]
+        "js": ["jquery.js", "ui.js", "content.js"]
 
     }]
 }
